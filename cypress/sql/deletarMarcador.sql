@@ -1,0 +1,1 @@
+DELETE FROM bugtracker.mantis_tag_table where name = '$name'

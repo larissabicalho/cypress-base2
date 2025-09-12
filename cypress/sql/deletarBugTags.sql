@@ -1,0 +1,1 @@
+DELETE FROM bugtracker.mantis_bug_tag_table LIMIT 1

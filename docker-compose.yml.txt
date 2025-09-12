@@ -1,0 +1,12 @@
+version: "3.8"
+
+services:
+  cypress:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: cypress-runner
+    working_dir: /app
+    volumes:
+      - .:/app
+    command: npx cypress run

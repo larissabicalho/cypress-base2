@@ -1,0 +1,1 @@
+DELETE FROM mantis_bug_revision_table ORDER BY id DESC LIMIT 2

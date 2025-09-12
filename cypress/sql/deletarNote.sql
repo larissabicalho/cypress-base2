@@ -1,0 +1,1 @@
+DELETE FROM bugtracker.mantis_bugnote_table where id = '$idNote'

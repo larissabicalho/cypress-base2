@@ -1,0 +1,1 @@
+SELECT id,username,email FROM bugtracker.mantis_user_table order by id desc Limit 1

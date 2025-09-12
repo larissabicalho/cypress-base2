@@ -1,0 +1,7 @@
+{
+  "administrator": {
+    "username": "administrator",
+    "password": "root",
+    "passwordUser":"admin"
+  }
+}

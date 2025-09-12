@@ -1,0 +1,19 @@
+# Ignora node_modules do host
+node_modules
+npm-debug.log
+yarn-error.log
+
+# Ignora arquivos de build / cache
+dist
+.build
+.cache
+tmp
+*.tmp
+
+# Git
+.git
+.gitignore
+
+# Cypress vídeos/screenshots (opcional)
+cypress/videos
+cypress/screenshots

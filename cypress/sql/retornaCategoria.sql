@@ -1,0 +1,1 @@
+SELECT name FROM bugtracker.mantis_category_table ORDER BY id DESC LIMIT 1

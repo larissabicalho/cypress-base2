@@ -1,0 +1,7 @@
+{
+  "host": "localhost",
+  "user": "mantisbt",
+  "password": "mantisbt",
+  "database": "bugtracker",
+  "port": 3306
+}

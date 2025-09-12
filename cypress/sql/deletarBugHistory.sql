@@ -1,0 +1,1 @@
+DELETE FROM bugtracker.mantis_bug_history_table where bug_id = '$bug_id'

@@ -1,0 +1,1 @@
+SELECT id,name FROM bugtracker.mantis_project_table ORDER BY id DESC LIMIT 1;

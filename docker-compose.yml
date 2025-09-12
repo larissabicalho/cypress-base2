@@ -1,0 +1,88 @@
+services:
+ cypress:
+   build:
+     context: .
+     dockerfile: Dockerfile
+   container_name: cypress-runner
+   networks:
+     - my-networks
+   working_dir: /app
+   volumes:
+     - .:/app
+     - /app/node_modules       # evita conflito de node_modules
+     - ./webdav_data:/shared_webdav
+   environment:
+     - LANG=pt_BR.UTF-8
+     - LANGUAGE=pt_BR:pt
+     - LC_ALL=pt_BR.UTF-8
+     - TZ=America/Sao_Paulo
+     - DOCKER=true
+     - DB_HOST=db
+     - DB_PORT=3306
+     - DB_USER=mantisbt
+     - DB_PASSWORD=mantisbt
+     - DB_NAME=bugtracker
+   depends_on:
+     - db
+     - mantisbt
+     - webdav
+   command: npm run test:full
+ db:
+   image: mariadb:latest
+   container_name: mantis-db
+   environment:
+     - MYSQL_ROOT_PASSWORD=root
+     - MYSQL_DATABASE=bugtracker
+     - MYSQL_USER=mantisbt
+     - MYSQL_PASSWORD=mantisbt
+   ports:
+     - '3306:3306'
+   networks:
+     - my-networks
+   restart: always
+ mantisbt:
+   image: vimagick/mantisbt:latest
+   container_name: mantisbt-app
+   networks:
+     - my-networks
+   environment:
+     - TZ=America/Sao_Paulo
+   ports:
+     - '8989:80'
+   restart: always
+   depends_on:
+     - db
+ webdav:
+   image: bytemark/webdav:latest
+   container_name: webdav-server
+   restart: always
+   ports:
+     - '8090:80'
+   environment:
+     AUTH_TYPE: Basic
+     USERNAME: TESTE_AUTOMATIZADO
+     PASSWORD: AUTOTESTE
+     LOCATION: /data
+   volumes:
+     - ./webdav_data:/var/lib/dav/data/
+   networks:
+     - my-networks 
+ jenkins:
+   build:
+     context: .
+     dockerfile: Dockerfile
+   container_name: jenkins
+   networks:
+     -  my-networks
+   privileged: true
+   user: root
+   ports:
+     - "8081:8080"
+     - "50000:50000"
+   volumes:
+        - ~/jenkins:/var/jenkins_home
+        - /var/run/docker.sock:/var/run/docker.sock
+        - /usr/local/bin/docker:/usr/local/bin/docker
+networks:
+ my-networks:
+   driver: bridge

@@ -1,0 +1,1 @@
+DELETE FROM bugtracker.mantis_user_profile_table where platform = '$platform'

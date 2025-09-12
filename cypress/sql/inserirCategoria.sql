@@ -1,0 +1,1 @@
+INSERT INTO bugtracker.mantis_category_table (name) VALUES ('$name')

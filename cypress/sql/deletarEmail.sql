@@ -1,0 +1,1 @@
+DELETE FROM bugtracker.mantis_email_table where email = '$email'

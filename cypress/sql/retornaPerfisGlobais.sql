@@ -1,0 +1,1 @@
+SELECT platform FROM bugtracker.mantis_user_profile_table order by id desc Limit 1

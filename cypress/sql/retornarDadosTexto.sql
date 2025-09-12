@@ -1,0 +1,1 @@
+select id,description from bugtracker.mantis_bug_text_table ORDER BY id DESC LIMIT 1
