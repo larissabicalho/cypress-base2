@@ -9,10 +9,16 @@
     "clean:reports": "rimraf cypress/reports && node -e \"require('fs').mkdirSync('cypress/reports/.jsons', { recursive: true })\"",
     "pretest": "npm run clean:reports",
     "combine-reports": "npx mochawesome-merge cypress/reports/.jsons/*.json > cypress/reports/mochawesome.json",
+<<<<<<< HEAD
     "generate-report": "npx marge ./cypress/reports/mochawesome.json --reportDir ./cypress/reports --reportFilename mochawesome --inline",  
     "posttest": "npm run combine-reports && npm run generate-report",
     "open-report": "start cypress\\reports\\mochawesome.html",
     "test:full": "npm run clean:reports && npm run test && npm run combine-reports && npm run generate-report && npm run open-report"
+=======
+    "generate-report": "npx marge ./cypress/reports/mochawesome.json --reportDir ./cypress/reports --reportFilename mochawesome --inline",   
+    "posttest": "npm run combine-reports && npm run generate-report",
+    "test:full": "npm run clean:reports && npm run test && npm run combine-reports && npm run generate-report"
+>>>>>>> 235fd4bb80eb174776946932103c05eef6b53c5f
   },
   "keywords": [],
   "author": "",
